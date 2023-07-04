@@ -15,9 +15,10 @@
       h1 {
         position: fixed;
         padding: 20px;
-        font-size: 30px;
+        font-size: 70px;
         color: rgb(255, 255, 255);
         bottom: 5%;
+        left: 5%;
       }
       .innerWrap {
         width: 100%;
@@ -32,11 +33,12 @@
         background-color: #ff5b5b;
       }
       .bar {
-        width: 50%;
+        width: 0%;
         height: inherit;
         position: absolute;
         z-index: 100;
         background-color: white;
+        transition: width 0.4s ease;
       }
     </style>
   </head>
@@ -53,13 +55,16 @@
 
     let scrollNum = 0;
     let documentHeight = 0;
+    let per = 0;
 
     window.addEventListener("scroll", () => {
       scrollNum = window.scrollY;
       documentHeight = document.body.scrollHeight - window.innerHeight;
 
-      h1.innerText = percent(scrollNum, documentHeight) + "%";
-      progressBar.style.width = percent(scrollNum, documentHeight) + "%";
+      per = percent(scrollNum, documentHeight) + "%";
+
+      h1.innerText = per;
+      progressBar.style.width = per;
     });
 
     const percent = (num, totalNum) => {
