@@ -23,15 +23,33 @@
         width: 100%;
         height: 5000px;
       }
+      .progressWrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background-color: #ff5b5b;
+      }
+      .bar {
+        width: 50%;
+        height: inherit;
+        position: absolute;
+        z-index: 100;
+        background-color: white;
+      }
     </style>
   </head>
   <body>
+    <div class="progressWrap">
+      <div class="bar"></div>
+    </div>
     <h1>test</h1>
     <div class="innerWrap"></div>
   </body>
   <script>
     const h1 = document.querySelector("h1");
-    // h1.innerText = '1'
+    const progressBar = document.querySelector(".bar");
 
     let scrollNum = 0;
     let documentHeight = 0;
@@ -41,6 +59,7 @@
       documentHeight = document.body.scrollHeight - window.innerHeight;
 
       h1.innerText = percent(scrollNum, documentHeight) + "%";
+      progressBar.style.width = percent(scrollNum, documentHeight) + "%";
     });
 
     const percent = (num, totalNum) => {
