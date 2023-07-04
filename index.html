@@ -19,7 +19,7 @@
       }
       .innerWrap {
         width: 100%;
-        height: 500vh;
+        height: 5000px;
       }
     </style>
   </head>
@@ -36,7 +36,11 @@
     window.addEventListener("scroll", () => {
       scrollNum = window.scrollY;
 
-      h1.innerText = scrollNum + "px";
+      h1.innerText =
+        (
+          (scrollNum / (document.body.scrollHeight - window.innerHeight)) *
+          100
+        ).toFixed(0) + "%";
     });
   </script>
 </html>
